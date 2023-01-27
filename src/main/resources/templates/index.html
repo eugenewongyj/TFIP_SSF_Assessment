@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Order</h1>
+    <form method="post" data-th-action="@{/pizza}" action="#" data-th-object="${pizza}">
+        <table>
+            <tr>
+                <td><input type="radio" value="bella" data-th-field="*{type}">Bella</input></td>
+                <td><input type="radio" value="margherita" data-th-field="*{type}">Margherita</input></td>
+                <td><input type="radio" value="marinara" data-th-field="*{type}">Marinara</input></td>
+                <td><input type="radio" value="spianatacalabrese" data-th-field="*{type}">Margherita</input></td>
+                <td><input type="radio" value="trioformaggio" data-th-field="*{type}">Trio Formaggio</input></td>
+            </tr>
+            <tr>
+                <span data-th-if="${#fields.hasErrors('type')}" data-th-errors="*{type}"></span>
+            </tr>
+        </table>
+        Size: <select th:field="*{size}">
+            <option data-th-value="sm">Small</option>
+            <option data-th-value="md">Medium</option>
+            <option data-th-value="lg">Large</option>
+        </select>
+        <br>
+        Quantity: <input type="number" data-th-field="*{quantity}">
+        <span data-th-if="${#fields.hasErrors('quantity')}" data-th-errors="*{quantity}"></span>
+        <br>
+        <button type="submit">Next</button>
+    </form>
+    
+</body>
+</html>

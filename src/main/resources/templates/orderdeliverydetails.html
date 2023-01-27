@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Order Delivery Details</h1>
+    <form method="post" data-th-action="@{/pizza/order}" action="#" data-th-object="${deliveryDetails}">
+        <!-- <input type="hidden" th:field="*{pizza.type}" th:value="${pizza.type}"> -->
+        <!-- <input type="hidden" th:field="*{pizza.type}" th:value="*{pizza.type}"> -->
+
+
+        <!-- <input type="hidden" th:field="*{pizza}" th:value="${pizza.id}"> -->
+
+        <!-- <input type="hidden" th:field="*{pizza}" th:object="${pizza}"> -->
+
+        <input type="hidden" th:field="*{pizza.type}" th:value="*{pizza.type}">
+        <input type="hidden" th:field="*{pizza.size}" th:value="*{pizza.size}">
+        <input type="hidden" th:field="*{pizza.quantity}" th:value="*{pizza.quantity}">
+        Name: <input type="text" data-th-field="*{name}">
+        <span data-th-if="${#fields.hasErrors('name')}" data-th-errors="*{name}"></span>
+        <br>
+        Address: <input type="text" data-th-field="*{address}">
+        <span data-th-if="${#fields.hasErrors('address')}" data-th-errors="*{address}"></span>
+        <br>
+        Phone: <input type="text" data-th-field="*{phone}">
+        <span data-th-if="${#fields.hasErrors('phone')}" data-th-errors="*{phone}"></span>
+        <br>
+        Rush: <input type="checkbox" value="true" data-th-field="*{isRush}">
+        <br>
+        Comments: <input type="text" data-th-field="*{comments}">
+        <br>
+        <button type="submit">Place Order</button>
+    </form>
+
+
+    
+</body>
+</html>
