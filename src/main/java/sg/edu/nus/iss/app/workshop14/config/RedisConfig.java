@@ -47,8 +47,8 @@ public class RedisConfig {
 
         final JedisConnectionFactory jedisConnectionFactory = new JedisConnectionFactory(config, jedisClient);
         jedisConnectionFactory.afterPropertiesSet();
-        RedisTemplate<String, Object> redisTemplate = new RedisTemplate<>();
-        RedisSerializer<Object> objSerializer = new JdkSerializationRedisSerializer(getClass().getClassLoader());
+        RedisTemplate<String, Object> redisTemplate = new RedisTemplate<String, Object>();
+    
         redisTemplate.setConnectionFactory(jedisConnectionFactory);
         redisTemplate.setKeySerializer(new StringRedisSerializer());
         redisTemplate.setValueSerializer(new StringRedisSerializer());
