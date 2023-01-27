@@ -1,37 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>Order</h1>
-    <form method="post" data-th-action="@{/pizza}" action="#" data-th-object="${pizza}">
-        <table>
-            <tr>
-                <td><input type="radio" value="bella" data-th-field="*{type}">Bella</input></td>
-                <td><input type="radio" value="margherita" data-th-field="*{type}">Margherita</input></td>
-                <td><input type="radio" value="marinara" data-th-field="*{type}">Marinara</input></td>
-                <td><input type="radio" value="spianatacalabrese" data-th-field="*{type}">Margherita</input></td>
-                <td><input type="radio" value="trioformaggio" data-th-field="*{type}">Trio Formaggio</input></td>
-            </tr>
-            <tr>
-                <span data-th-if="${#fields.hasErrors('type')}" data-th-errors="*{type}"></span>
-            </tr>
-        </table>
-        Size: <select th:field="*{size}">
-            <option data-th-value="sm">Small</option>
-            <option data-th-value="md">Medium</option>
-            <option data-th-value="lg">Large</option>
-        </select>
-        <br>
-        Quantity: <input type="number" data-th-field="*{quantity}">
-        <span data-th-if="${#fields.hasErrors('quantity')}" data-th-errors="*{quantity}"></span>
-        <br>
-        <button type="submit">Next</button>
-    </form>
-    
-</body>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Panucci's Pizza</title>
+		<link rel="stylesheet" href="/styles.css">
+	</head>
+	<body>
+
+		<div class="title">
+			<div><img src="/images/logo.jpg" class="thumbnail"></div>
+			<h2>Panucci's Pizza</h2>
+		</div>
+
+		<form method="post" data-th-action="@{/pizza}" action="#" data-th-object="${pizza}">
+			<div>
+				<h2>Select a pizza</h2>
+				<table>
+					<tr>
+						<td>
+							<div>
+								<img src="/images/Bella.png" class="pizza">
+							</div>
+							<div>
+								<input type="radio" name="type" value="bella"> Bella
+							</div>
+						</td>
+						<td>
+							<div>
+								<img src="/images/Margherita.png" class="pizza">
+							</div>
+							<div>
+								<input type="radio" name="type" value="margherita"> Margherita
+							</div>
+						</td>
+						<td>
+							<div>
+								<img src="/images/Marinara.png" class="pizza">
+							</div>
+							<div>
+								<input type="radio" name="type" value="marinara"> Marinara
+							</div>
+						</td>
+						<td>
+							<div>
+								<img src="/images/SpianataCalabrese.png" class="pizza">
+							</div>
+							<div>
+								<input type="radio" name="type" value="spianatacalabrese"> Spianata Calabrese
+							</div>
+						</td>
+						<td>
+							<div>
+								<img src="/images/TrioFormaggio.png" class="pizza">
+							</div>
+							<div>
+								<input type="radio" name="pizza" value="trioformaggio"> Trio Formaggio
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td>Size:</td>
+						<td>
+							<select name="size" >
+								<option value="sm">Small</option>
+								<option value="md">Medium</option>
+								<option value="lg">Large</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td>Quantity:</td>
+						<td>
+							<input type="number" min="1" name="quantity"> 
+						</td>
+					</tr>
+					<tr>
+						<td></td>
+						<td>
+							<button type="submit">Next</button>
+						</td>
+					</tr>
+				</table>
+			</div>
+		</form>
+		
+	</body>
 </html>
