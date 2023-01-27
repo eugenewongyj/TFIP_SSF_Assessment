@@ -16,11 +16,42 @@
         <!-- <input type="hidden" th:field="*{pizza}" th:value="${pizza.id}"> -->
 
         <!-- <input type="hidden" th:field="*{pizza}" th:object="${pizza}"> -->
-
         <input type="hidden" th:field="*{pizza.type}" th:value="*{pizza.type}">
         <input type="hidden" th:field="*{pizza.size}" th:value="*{pizza.size}">
         <input type="hidden" th:field="*{pizza.quantity}" th:value="*{pizza.quantity}">
-        Name: <input type="text" data-th-field="*{name}">
+        <table>
+            <tr>
+                <td>Name:</td>
+                <td><input type="text" data-th-field="*{name}"></td>
+                <td><span data-th-if="${#fields.hasErrors('name')}" data-th-errors="*{name}"></span></td>
+            </tr>
+            <tr>
+                <td>Address:</td>
+                <td><input type="text" data-th-field="*{address}"></td>
+                <td><span data-th-if="${#fields.hasErrors('address')}" data-th-errors="*{address}"></span></td>
+            </tr>
+            <tr>
+                <td>Phone:</td>
+                <td><input type="text" data-th-field="*{phone}"></td>
+                <td><span data-th-if="${#fields.hasErrors('phone')}" data-th-errors="*{phone}"></span></td>
+            </tr>
+            <tr>
+                <td>Rush:</td>
+                <td><input type="checkbox" value="true" data-th-field="*{isRush}"></td>
+            </tr>
+            <tr>
+                <td>Comments:</td>
+                <td><input type="text" data-th-field="*{comments}"></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><button onclick="window.location.href='/'">Cancel Order</button></td>
+                <td><button type="submit">Place Order</button></td>
+            </tr>
+
+        </table>
+
+        <!-- Name: <input type="text" data-th-field="*{name}">
         <span data-th-if="${#fields.hasErrors('name')}" data-th-errors="*{name}"></span>
         <br>
         Address: <input type="text" data-th-field="*{address}">
@@ -33,7 +64,7 @@
         <br>
         Comments: <input type="text" data-th-field="*{comments}">
         <br>
-        <button type="submit">Place Order</button>
+        <button type="submit">Place Order</button> -->
     </form>
 
 

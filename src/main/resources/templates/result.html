@@ -10,7 +10,7 @@
     <h1>Delivery Details</h1>
     <table>
         <tr>
-            <td>Order Number: <span data-th-text="${deliveryDetailsSaved.id}"></span></td>
+            <td>Order Number: <a data-th-href="@{/order/{orderId}(orderId=${deliveryDetailsSaved.id})}" target="_blank"><span data-th-text="${deliveryDetailsSaved.id}"></span></a></td>
         </tr>
         <tr>
             <td>Your order will be delivered to <span data-th-text="${deliveryDetailsSaved.address}"></span></td>

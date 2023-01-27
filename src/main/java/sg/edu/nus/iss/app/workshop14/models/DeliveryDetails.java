@@ -5,15 +5,23 @@ import java.util.Random;
 
 import jakarta.json.Json;
 import jakarta.json.JsonObject;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
 public class DeliveryDetails implements Serializable {
 
     private String id;
 
+    @NotBlank(message="Name is mandatory")
+    @Size(min=3, message="Name must have a minimum of 3 characters")
     private String name;
 
+    @NotBlank(message="Address is mandatory")
     private String address;
 
+    @NotBlank(message="Phone number is mandatory")
+    @Size(min=8, max=8, message="Phone number must be 8 digits")
     private String phone;
 
     private Boolean isRush;

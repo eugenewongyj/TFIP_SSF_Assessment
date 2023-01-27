@@ -9,12 +9,12 @@ import jakarta.validation.constraints.NotNull;
 public class Pizza implements Serializable {
 
     // From View 0 
-
-    @NotNull(message="Must have a pizza selection")
+    @NotNull(message="Please select a pizza")
     private String type;
 
     private String size;
 
+    @NotNull(message="Please enter quantity")
     @Min(value=1, message="Minimum of 1 pizza")
     @Max(value=10, message="Maximum of 10 pizzas")
     private Integer quantity;
