@@ -1,6 +1,5 @@
 package sg.edu.nus.iss.app.workshop14.controller;
 
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -8,22 +7,16 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
-import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
-import sg.edu.nus.iss.app.workshop14.models.Contact;
+
 import sg.edu.nus.iss.app.workshop14.models.DeliveryDetails;
 import sg.edu.nus.iss.app.workshop14.models.Pizza;
-import sg.edu.nus.iss.app.workshop14.repository.ContactsRedis;
 import sg.edu.nus.iss.app.workshop14.service.DeliveryDetailsService;
 
 @Controller
 public class PizzaController {
-    @Autowired
-    private ContactsRedis contactsRedis;
 
     @Autowired
     private DeliveryDetailsService deliveryDetailsService;
@@ -58,29 +51,4 @@ public class PizzaController {
         return "result";
     }
 
-    @PostMapping("/contact")
-    public String saveContact(@Valid Contact contact, BindingResult bindingResult, Model model, HttpServletResponse response) {
-        if (bindingResult.hasErrors()) {
-            return "contact";
-        }
-        contactsRedis.save(contact);
-        model.addAttribute("contact", contact);
-        response.setStatus(HttpServletResponse.SC_CREATED);
-        return "showContact";
-    }
-
-    @GetMapping(path="/contact")
-    public String getAllContacts(@RequestParam(name="startIndex") Integer startIndex, Model model) {
-        List<Contact> result = contactsRedis.findAll(startIndex);
-        model.addAttribute("contacts", result);
-        return "listContact";
-    }
-
-    @GetMapping(path="/contact/{contactId}") 
-    public String getContactInfoById(@PathVariable(value="contactId") String contactId, Model model) {
-        Contact contact = contactsRedis.findById(contactId);
-        System.out.println("Taken from repo");
-        model.addAttribute("contact", contact);
-        return "showContact";
-    }
 }

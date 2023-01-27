@@ -7,7 +7,25 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Result</h1>
+    <h1>Delivery Details</h1>
+    <table>
+        <tr>
+            <td>Order Number: <span data-th-text="${deliveryDetailsSaved.id}"></span></td>
+        </tr>
+        <tr>
+            <td>Your order will be delivered to <span data-th-text="${deliveryDetailsSaved.address}"></span></td>
+        </tr>
+        <tr>
+           <td>Pizza cost: <span data-th-text="${deliveryDetailsSaved.isRush} ? ${deliveryDetailsSaved.totalCost - 2}  : ${deliveryDetailsSaved.totalCost}"></span></td> 
+        </tr>
+        <tr data-th-if="${deliveryDetailsSaved.isRush}">
+            <td>Rush: $2</td> 
+         </tr>
+         <tr>
+            <td>Total cost <span data-th-text="${deliveryDetailsSaved.totalCost}"></span></td>
+        </tr>
+    </table>
+  
     
 </body>
 </html>

@@ -99,10 +99,13 @@ public class DeliveryDetails implements Serializable {
         this.totalCost = totalCost;
     }
 
+    
+
     @Override
     public String toString() {
         return "DeliveryDetails [id=" + id + ", name=" + name + ", address=" + address + ", phone=" + phone
-                + ", isRush=" + isRush + ", comments=" + comments + ", pizza=" + pizza + "]";
+                + ", isRush=" + isRush + ", comments=" + comments + ", totalCost=" + totalCost + ", pizza=" + pizza
+                + "]";
     }
 
     public JsonObject toJsonObject() {
